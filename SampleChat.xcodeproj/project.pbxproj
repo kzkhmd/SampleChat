@@ -16,6 +16,7 @@
 		D4187752241DE9A200380F6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4187751241DE9A200380F6C /* GoogleService-Info.plist */; };
 		D4466AD8241DFA5300B4925F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4466AD7241DFA5300B4925F /* ChatViewController.swift */; };
 		D4B5E564241E5D680036AB42 /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B5E563241E5D680036AB42 /* MockMessage.swift */; };
+		D4D5919F2425DC9A005C192B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D5919E2425DC9A005C192B /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		D4187751241DE9A200380F6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4466AD7241DFA5300B4925F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D4B5E563241E5D680036AB42 /* MockMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
+		D4D5919E2425DC9A005C192B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				D40ED9D2241DE66E00CB3F0E /* AppDelegate.swift */,
 				D40ED9D4241DE66E00CB3F0E /* SceneDelegate.swift */,
 				D4466AD7241DFA5300B4925F /* ChatViewController.swift */,
+				D4D5919E2425DC9A005C192B /* SignUpViewController.swift */,
 				D4B5E563241E5D680036AB42 /* MockMessage.swift */,
 				D40ED9D8241DE66E00CB3F0E /* Main.storyboard */,
 				D40ED9DB241DE67300CB3F0E /* Assets.xcassets */,
@@ -217,6 +220,7 @@
 				D40ED9D3241DE66E00CB3F0E /* AppDelegate.swift in Sources */,
 				D4466AD8241DFA5300B4925F /* ChatViewController.swift in Sources */,
 				D40ED9D5241DE66E00CB3F0E /* SceneDelegate.swift in Sources */,
+				D4D5919F2425DC9A005C192B /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
