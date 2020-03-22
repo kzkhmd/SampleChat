@@ -10,22 +10,23 @@
         <!--Chat View Controller-->
         <scene sceneID="Tzt-9U-qfL">
             <objects>
-                <viewController id="TFn-KF-oWr" customClass="ChatViewController" customModule="SampleChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatView" id="TFn-KF-oWr" customClass="ChatViewController" customModule="SampleChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Cp-xL-9c5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="dzm-Wy-CSi"/>
                     </view>
+                    <navigationItem key="navigationItem" id="KPV-Oe-kJj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gKa-kn-zur" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1029" y="110"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--Auth View Controller-->
         <scene sceneID="1X2-db-eFF">
             <objects>
-                <viewController id="lRt-wF-5tz" customClass="SignUpViewController" customModule="SampleChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lRt-wF-5tz" customClass="AuthViewController" customModule="SampleChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sWG-UF-Qzl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,6 +57,16 @@
                                     <action selector="didTapSignUpButton:" destination="lRt-wF-5tz" eventType="touchUpInside" id="4tG-HK-Ohl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ZX-ZQ-m2v">
+                                <rect key="frame" x="16" y="206" width="382" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PhS-kp-IYV"/>
+                                </constraints>
+                                <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="didTapSignInButton:" destination="lRt-wF-5tz" eventType="touchUpInside" id="tdi-A4-SXl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -66,14 +77,18 @@
                             <constraint firstItem="sB3-H9-l9x" firstAttribute="top" secondItem="EXY-k0-u3i" secondAttribute="bottom" constant="16" id="MfY-Z3-RzL"/>
                             <constraint firstItem="sB3-H9-l9x" firstAttribute="leading" secondItem="BfB-OX-g6f" secondAttribute="leading" constant="16" id="U6y-1C-1em"/>
                             <constraint firstItem="EXY-k0-u3i" firstAttribute="top" secondItem="BfB-OX-g6f" secondAttribute="top" constant="16" id="a5U-jz-FKB"/>
+                            <constraint firstItem="BfB-OX-g6f" firstAttribute="trailing" secondItem="9ZX-ZQ-m2v" secondAttribute="trailing" constant="16" id="hnN-SM-DGK"/>
                             <constraint firstItem="BfB-OX-g6f" firstAttribute="trailing" secondItem="sB3-H9-l9x" secondAttribute="trailing" constant="16" id="jtF-wc-AG5"/>
+                            <constraint firstItem="9ZX-ZQ-m2v" firstAttribute="leading" secondItem="BfB-OX-g6f" secondAttribute="leading" constant="16" id="na6-0O-EOM"/>
                             <constraint firstItem="BfB-OX-g6f" firstAttribute="trailing" secondItem="EXY-k0-u3i" secondAttribute="trailing" constant="16" id="pV3-T0-Xxb"/>
+                            <constraint firstItem="9ZX-ZQ-m2v" firstAttribute="top" secondItem="cpg-as-mWg" secondAttribute="bottom" constant="16" id="zie-B9-aWc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BfB-OX-g6f"/>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="EXY-k0-u3i" id="Q2g-GQ-EWf"/>
                         <outlet property="passwordTextField" destination="sB3-H9-l9x" id="3Cq-76-0F8"/>
+                        <segue destination="TFn-KF-oWr" kind="presentation" identifier="chatViewSegue" modalPresentationStyle="fullScreen" id="dQD-zf-Cpk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wv-Un-m3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
