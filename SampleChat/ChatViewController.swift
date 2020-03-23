@@ -11,6 +11,7 @@ import MapKit
 import MessageKit
 import InputBarAccessoryView
 import FirebaseDatabase
+import FirebaseAuth
 
 
 class ChatViewController: MessagesViewController {
@@ -18,6 +19,11 @@ class ChatViewController: MessagesViewController {
     var messageList: [MockMessage] = []
     
     var databaseReference: DatabaseReference!
+    
+    var handle: AuthStateDidChangeListenerHandle!
+    
+    var uid: String = ""
+    var displayName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +37,22 @@ class ChatViewController: MessagesViewController {
         databaseReference = Database.database().reference()
         
         observeDatabase()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if let user = user {
+                self.uid = user.uid
+                
+                if let displayName = user.displayName {
+                    self.displayName = displayName
+                }
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     func observeDatabase() {
@@ -54,7 +76,7 @@ class ChatViewController: MessagesViewController {
 extension ChatViewController: MessagesDataSource {
     
     func currentSender() -> SenderType {
-        return MockUser(senderId: "Yamada", displayName: "Yamada")
+        return MockUser(senderId: self.uid, displayName: self.displayName)
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
@@ -126,7 +148,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         let messageData = [
-            "name" : "Yamada",
+            "displayName" : displayName,
             "message" : text
         ]
         
