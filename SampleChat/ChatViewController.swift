@@ -23,7 +23,7 @@ class ChatViewController: MessagesViewController {
     var handle: AuthStateDidChangeListenerHandle!
     
     var uid: String = ""
-    var displayName: String = ""
+    var displayName: String = "Hamada"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +40,8 @@ class ChatViewController: MessagesViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
                 self.uid = user.uid
@@ -52,6 +54,8 @@ class ChatViewController: MessagesViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     
@@ -59,14 +63,23 @@ class ChatViewController: MessagesViewController {
         self.databaseReference.observe(DataEventType.childAdded, with: {(snapshot) in
             let postDict = snapshot.value as? [String : AnyObject] ?? [:]
             
-            if let name = postDict["name"] as? String, let message = postDict["message"] as? String {
-                let user = MockUser(senderId: name, displayName: name)
-                let message = MockMessage(text: message, user: user, messageId: UUID().uuidString, date: Date())
+            if let senderId = postDict["senderId"] as? String, let displayName = postDict["displayName"] as? String, let message = postDict["message"] as? String, let messageId = postDict["messageId"] as? String {
+                let user = MockUser(senderId: senderId, displayName: displayName)
+                let message = MockMessage(text: message, user: user, messageId: messageId, date: Date())
                 
                 self.messageList.append(message)
                 self.messagesCollectionView.reloadData()
             }
         })
+    }
+    
+    @IBAction func didTapSignOutButton(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            dismiss(animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
 }
 
@@ -148,7 +161,9 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         let messageData = [
-            "displayName" : displayName,
+            "senderId" : self.uid,
+            "displayName" : self.displayName,
+            "messageId" : UUID().uuidString,
             "message" : text
         ]
         
