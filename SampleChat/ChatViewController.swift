@@ -23,7 +23,7 @@ class ChatViewController: MessagesViewController {
     var handle: AuthStateDidChangeListenerHandle!
     
     var uid: String = ""
-    var displayName: String = "Hamada"
+    var displayName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

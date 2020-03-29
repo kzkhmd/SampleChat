@@ -25,7 +25,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Setting" id="AG3-pA-vcp">
                             <connections>
-                                <segue destination="Kps-AO-f4i" kind="presentation" id="zCX-TN-fgg"/>
+                                <segue destination="Kps-AO-f4i" kind="presentation" modalPresentationStyle="fullScreen" id="zCX-TN-fgg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -34,35 +34,53 @@
             </objects>
             <point key="canvasLocation" x="1939.1304347826087" y="109.82142857142857"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="AY6-7K-BnC">
             <objects>
-                <viewController id="Kps-AO-f4i" sceneMemberID="viewController">
+                <viewController id="Kps-AO-f4i" customClass="SettingViewController" customModule="SampleChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LdY-sS-TI8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rxm-RH-CRU">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="OO4-gQ-SeU">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="mS4-TA-NfE"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="mS4-TA-NfE">
+                                            <connections>
+                                                <action selector="didTapDoneButton:" destination="Kps-AO-f4i" id="Wff-Xe-u2Q"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jlI-25-ENG">
+                                <rect key="frame" x="16" y="104" width="382" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="uOv-SF-nF2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="rxm-RH-CRU" firstAttribute="leading" secondItem="C1t-ce-pjq" secondAttribute="leading" id="2rg-4s-zgx"/>
+                            <constraint firstItem="jlI-25-ENG" firstAttribute="leading" secondItem="C1t-ce-pjq" secondAttribute="leading" constant="16" id="7bN-qW-j2v"/>
                             <constraint firstItem="rxm-RH-CRU" firstAttribute="trailing" secondItem="C1t-ce-pjq" secondAttribute="trailing" id="L9Z-ce-9Kf"/>
                             <constraint firstItem="rxm-RH-CRU" firstAttribute="top" secondItem="C1t-ce-pjq" secondAttribute="top" id="a5N-eV-D0f"/>
+                            <constraint firstItem="C1t-ce-pjq" firstAttribute="trailing" secondItem="jlI-25-ENG" secondAttribute="trailing" constant="16" id="dMe-1M-hM7"/>
+                            <constraint firstItem="jlI-25-ENG" firstAttribute="top" secondItem="rxm-RH-CRU" secondAttribute="bottom" constant="16" id="uyg-9O-fQY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="C1t-ce-pjq"/>
                     </view>
+                    <connections>
+                        <outlet property="displayNameTextField" destination="jlI-25-ENG" id="wec-p0-hdR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nK-2u-k56" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2903" y="110"/>
+            <point key="canvasLocation" x="2902.898550724638" y="109.82142857142857"/>
         </scene>
         <!--Auth View Controller-->
         <scene sceneID="1X2-db-eFF">

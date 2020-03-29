@@ -17,6 +17,7 @@
 		D4466AD8241DFA5300B4925F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4466AD7241DFA5300B4925F /* ChatViewController.swift */; };
 		D4B5E564241E5D680036AB42 /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B5E563241E5D680036AB42 /* MockMessage.swift */; };
 		D4D5919F2425DC9A005C192B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D5919E2425DC9A005C192B /* AuthViewController.swift */; };
+		D4F8998D242F7245000C6B4D /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F8998C242F7245000C6B4D /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		D4466AD7241DFA5300B4925F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D4B5E563241E5D680036AB42 /* MockMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
 		D4D5919E2425DC9A005C192B /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		D4F8998C242F7245000C6B4D /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				D4D5919E2425DC9A005C192B /* AuthViewController.swift */,
 				D4B5E563241E5D680036AB42 /* MockMessage.swift */,
 				D40ED9D8241DE66E00CB3F0E /* Main.storyboard */,
+				D4F8998C242F7245000C6B4D /* SettingViewController.swift */,
 				D40ED9DB241DE67300CB3F0E /* Assets.xcassets */,
 				D40ED9DD241DE67300CB3F0E /* LaunchScreen.storyboard */,
 				D4187751241DE9A200380F6C /* GoogleService-Info.plist */,
@@ -221,6 +224,7 @@
 				D4466AD8241DFA5300B4925F /* ChatViewController.swift in Sources */,
 				D40ED9D5241DE66E00CB3F0E /* SceneDelegate.swift in Sources */,
 				D4D5919F2425DC9A005C192B /* AuthViewController.swift in Sources */,
+				D4F8998D242F7245000C6B4D /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
