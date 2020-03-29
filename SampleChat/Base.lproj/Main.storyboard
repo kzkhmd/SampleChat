@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lRt-wF-5tz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lRt-wF-5tz">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="dzm-Wy-CSi"/>
                     </view>
                     <navigationItem key="navigationItem" id="KPV-Oe-kJj">
@@ -64,6 +65,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="rxm-RH-CRU" firstAttribute="leading" secondItem="C1t-ce-pjq" secondAttribute="leading" id="2rg-4s-zgx"/>
                             <constraint firstItem="jlI-25-ENG" firstAttribute="leading" secondItem="C1t-ce-pjq" secondAttribute="leading" constant="16" id="7bN-qW-j2v"/>
@@ -73,12 +75,20 @@
                             <constraint firstItem="jlI-25-ENG" firstAttribute="top" secondItem="rxm-RH-CRU" secondAttribute="bottom" constant="16" id="uyg-9O-fQY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="C1t-ce-pjq"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="3C5-6C-vv3" appends="YES" id="vej-tt-Ml9"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="displayNameTextField" destination="jlI-25-ENG" id="wec-p0-hdR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nK-2u-k56" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="3C5-6C-vv3">
+                    <connections>
+                        <action selector="didTapView:" destination="Kps-AO-f4i" id="lgF-rd-wIr"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2902.898550724638" y="109.82142857142857"/>
         </scene>
@@ -128,6 +138,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="cpg-as-mWg" firstAttribute="leading" secondItem="BfB-OX-g6f" secondAttribute="leading" constant="16" id="03R-im-wCF"/>
                             <constraint firstItem="cpg-as-mWg" firstAttribute="top" secondItem="sB3-H9-l9x" secondAttribute="bottom" constant="16" id="3Zo-1w-T0m"/>
@@ -143,6 +154,9 @@
                             <constraint firstItem="9ZX-ZQ-m2v" firstAttribute="top" secondItem="cpg-as-mWg" secondAttribute="bottom" constant="16" id="zie-B9-aWc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BfB-OX-g6f"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="jDB-8z-rzO" appends="YES" id="hl6-jh-2jk"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="EXY-k0-u3i" id="Q2g-GQ-EWf"/>
@@ -151,6 +165,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wv-Un-m3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="jDB-8z-rzO">
+                    <connections>
+                        <action selector="didTapView:" destination="lRt-wF-5tz" id="XT2-jV-Ydy"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="167" y="110"/>
         </scene>

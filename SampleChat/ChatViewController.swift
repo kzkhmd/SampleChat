@@ -28,11 +28,8 @@ class ChatViewController: MessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        messagesCollectionView.messagesDataSource = self
-        messagesCollectionView.messagesLayoutDelegate = self
-        messagesCollectionView.messagesDisplayDelegate = self
-        
-        messageInputBar.delegate = self
+        configureMessageColloctionView()
+        configureMessageInputBar()
         
         databaseReference = Database.database().reference()
         
@@ -57,6 +54,18 @@ class ChatViewController: MessagesViewController {
         super.viewWillDisappear(animated)
         
         Auth.auth().removeStateDidChangeListener(handle!)
+    }
+    
+    func configureMessageColloctionView() {
+        messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
+        
+        scrollsToBottomOnKeyboardBeginsEditing = true
+    }
+    
+    func configureMessageInputBar() {
+        messageInputBar.delegate = self
     }
     
     func observeDatabase() {
@@ -166,6 +175,8 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             "messageId" : UUID().uuidString,
             "message" : text
         ]
+        
+        self.messagesCollectionView.scrollToBottom(animated: true)
         
         self.databaseReference.childByAutoId().setValue(messageData)
     }

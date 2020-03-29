@@ -45,6 +45,8 @@ class SettingViewController: UIViewController {
     @IBAction func didTapDoneButton(_ sender: Any) {
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
         
+        self.view.endEditing(true)
+        
         changeRequest?.displayName = displayNameTextField.text
         changeRequest?.commitChanges(completion: { (error) in
             if error == nil {
@@ -56,5 +58,9 @@ class SettingViewController: UIViewController {
         })
         
         self.activityIndicator.startAnimating()
+    }
+    
+    @IBAction func didTapView(_ sender: Any) {
+        self.view.endEditing(true)
     }
 }

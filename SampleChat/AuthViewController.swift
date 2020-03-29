@@ -73,4 +73,8 @@ class AuthViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func didTapView(_ sender: Any) {
+        self.view.endEditing(true)
+    }
 }
