@@ -14,12 +14,28 @@ class AuthViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
+    
+    var activityIndicator: UIActivityIndicatorView!
+    var alertController: UIAlertController!
     
     var handle: AuthStateDidChangeListenerHandle!
+    
+    enum TextFieldTag: Int {
+        case email
+        case password
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        passwordTextField.isSecureTextEntry = true
+        
+        configureActivityIndicator()
+        configureAlertController()
+        
+        self.view.addSubview(activityIndicator)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +50,29 @@ class AuthViewController: UIViewController {
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     
+    func configureActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.large
+    }
+    
+    func configureAlertController() {
+        alertController = UIAlertController(
+            title: "認証に失敗しました",
+            message: "ログインできませんでした。メールアドレスかパスワードが間違っています",
+            preferredStyle: .alert
+        )
+        
+        alertController.addAction(
+            UIAlertAction(title: "OK", style: .default, handler: nil)
+        )
+        alertController.addAction(
+            UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+        )
+    }
+    
     @IBAction func didTapSignUpButton(_ sender: Any) {
         guard let email = emailTextField.text else {
             print("email is nil")
@@ -45,9 +84,13 @@ class AuthViewController: UIViewController {
             return
         }
         
+        self.activityIndicator.startAnimating()
+        
         Auth.auth().createUser(withEmail: email, password: password) { (authDataResult, error) in
+            self.activityIndicator.stopAnimating()
+            
             if error != nil {
-                print("cannot sign up")
+                self.present(self.alertController, animated: true, completion: nil)
             } else {
                 self.performSegue(withIdentifier: "chatViewSegue", sender: nil)
             }
@@ -65,9 +108,13 @@ class AuthViewController: UIViewController {
             return
         }
         
+        self.activityIndicator.startAnimating()
+        
         Auth.auth().signIn(withEmail: email, password: password) { (authDataResult, error) in
+            self.activityIndicator.stopAnimating()
+            
             if error != nil {
-                print("cannot sign in")
+                self.present(self.alertController, animated: true, completion: nil)
             } else {
                 self.performSegue(withIdentifier: "chatViewSegue", sender: nil)
             }
